@@ -20,3 +20,15 @@ export async function createSession(userId) {
     );
     return sessionId;
 }
+
+export async function validateSession(sessionId) {
+    const [rows] = await pool.execute(
+        'SELECT u.id, u.username FROM sessions s JOIN users u ON s.user_id = u.id WHERE s.id = ? AND s.expires_at > NOW()',
+        [sessionId]
+    );
+    return rows[0] ?? null;
+}
+
+export async function invalidateSession(sessionId) {
+    await pool.execute('DELETE FROM sessions WHERE id = ?', [sessionId]);
+}
