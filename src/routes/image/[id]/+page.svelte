@@ -13,12 +13,20 @@
         <div class="flex items-center justify-between mt-3">
             <span class="text-sm text-gray-400">by {data.image.username}</span>
             <span class="text-indigo-600 font-bold text-sm">▲ {data.image.votes} votes</span>
+
+            <form action="?/vote" method="POST" class="m-0">
+                <button type="submit"
+                    class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition cursor-pointer">
+                    ▲ {data.image.votes} votes
+                </button>
+            </form>
+
         </div>
     </div>
 
     <hr class="my-8 border-gray-200" />
 
-    
+
     <h2 class="text-xl font-bold text-gray-800 mb-4">Comments</h2>
 
     {#if data.comments.length === 0}
