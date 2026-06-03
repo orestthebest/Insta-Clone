@@ -1,0 +1,31 @@
+import pool from '$lib/server/database.js';
+
+export async function load({ params }) {
+    const id = params.id;
+
+
+    const [images] = await pool.execute(`
+        SELECT images.id, images.image, images.description, images.votes, images.author_id, users.username
+        FROM images
+        JOIN users ON images.author_id = users.id
+        WHERE images.id = ?
+    `, [id]);
+
+    if (images.length === 0) {
+        return { status: 404 };
+    }
+
+
+    const [comments] = await pool.execute(`
+        SELECT comments.id, comments.text, comments.created_at, users.username
+        FROM comments
+        JOIN users ON comments.user_id = users.id
+        WHERE comments.image_id = ?
+        ORDER BY comments.created_at ASC
+    `, [id]);
+
+    return {
+        image: images[0],
+        comments
+    };
+}
