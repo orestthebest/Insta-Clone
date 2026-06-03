@@ -45,5 +45,29 @@ export const actions = {
         );
 
         redirect(303, `/image/${id}`);
+    },
+
+    comment: async ({ params, locals, request }) => {
+
+        if (!locals.user) redirect(303, '/login');
+
+        const id = params.id;
+        const form = await request.formData();
+        const text = form.get('text');
+
+        
+        if (!text || text.trim() === '') {
+            return fail(400, { error: 'Comment cannot be empty' });
+        }
+
+       
+        await pool.execute(
+            'INSERT INTO comments (user_id, image_id, text) VALUES (?, ?, ?)',
+            [locals.user.id, id, text]
+        );
+
+        redirect(303, `/image/${id}`);
     }
 };
+
+
