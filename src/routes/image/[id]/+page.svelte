@@ -1,0 +1,37 @@
+<script>
+    let { data } = $props();
+</script>
+
+<div class="max-w-2xl mx-auto">
+
+
+    <img src={data.image.image} alt={data.image.description}
+        class="w-full rounded-xl shadow-md object-cover max-h-[500px]" />
+
+    <div class="mt-6">
+        <p class="text-gray-700 text-lg">{data.image.description || 'No description'}</p>
+        <div class="flex items-center justify-between mt-3">
+            <span class="text-sm text-gray-400">by {data.image.username}</span>
+            <span class="text-indigo-600 font-bold text-sm">▲ {data.image.votes} votes</span>
+        </div>
+    </div>
+
+    <hr class="my-8 border-gray-200" />
+
+    
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Comments</h2>
+
+    {#if data.comments.length === 0}
+        <p class="text-gray-400 text-sm">No comments yet. Be the first!</p>
+    {/if}
+
+    <div class="flex flex-col gap-4 mb-8">
+        {#each data.comments as comment (comment.id)}
+            <div class="bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm">
+                <p class="text-sm font-semibold text-indigo-600 mb-1">{comment.username}</p>
+                <p class="text-gray-700 text-sm">{comment.text}</p>
+            </div>
+        {/each}
+    </div>
+
+</div>
