@@ -12,6 +12,7 @@
         <p class="text-gray-700 text-lg">{data.image.description || 'No description'}</p>
         <div class="flex items-center justify-between mt-3">
             <span class="text-sm text-gray-400">by {data.image.username}</span>
+
             <span class="text-indigo-600 font-bold text-sm">▲ {data.image.votes} votes</span>
 
             <form action="?/vote" method="POST" class="m-0">
@@ -41,5 +42,27 @@
             </div>
         {/each}
     </div>
+
+    {#if data.image}
+        <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 class="text-md font-bold text-gray-700 mb-3">Add a comment</h3>
+
+            {#if form?.error}
+                <p class="bg-red-50 border border-red-200 text-red-600 rounded-lg px-4 py-3 mb-3 text-sm">
+                    {form.error}
+                </p>
+            {/if}
+
+            <form action="?/comment" method="POST" class="flex flex-col gap-3">
+                <textarea name="text" rows="3" placeholder="Write your comment..."
+                    class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 resize-none">
+                </textarea>
+                <button type="submit"
+                    class="self-end bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition cursor-pointer">
+                    Post Comment
+                </button>
+            </form>
+        </div>
+    {/if}
 
 </div>
