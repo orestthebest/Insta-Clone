@@ -29,3 +29,21 @@ export async function load({ params }) {
         comments
     };
 }
+
+export const actions = {
+
+    vote: async ({ params, locals }) => {
+
+        if (!locals.user) redirect(303, '/login');
+
+        const id = params.id;
+
+
+        await pool.execute(
+            'UPDATE images SET votes = votes + 1 WHERE id = ?',
+            [id]
+        );
+
+        redirect(303, `/image/${id}`);
+    }
+};
