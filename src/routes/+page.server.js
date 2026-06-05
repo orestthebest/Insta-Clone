@@ -1,6 +1,6 @@
 import pool from '$lib/server/database.js';
 
-export async function load() {
+export async function load({ locals }) {
     const [images] = await pool.execute(`
         SELECT images.id, images.image, images.description, images.votes, users.username
         FROM images
@@ -9,5 +9,8 @@ export async function load() {
         LIMIT 25
     `);
 
-    return { images };
+    return {
+        images,
+        user: locals.user
+    };
 }
