@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import { del } from '@vercel/blob';
 import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
-export async function load({ params }) {
+export async function load({ params, locals }) {
     const userId = params.id;
 
     const [users] = await pool.execute(
@@ -23,7 +23,8 @@ export async function load({ params }) {
 
     return {
         profile: users[0],
-        images
+        images,
+        user: locals.user
     };
 }
 

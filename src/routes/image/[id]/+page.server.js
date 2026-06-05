@@ -1,9 +1,6 @@
-
 import pool from '$lib/server/database.js';
 import pool from '$lib/server/database.js';
 import { redirect, fail } from '@sveltejs/kit';
-
-
 
 
 export async function load({ params }) {
