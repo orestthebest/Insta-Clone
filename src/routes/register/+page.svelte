@@ -12,7 +12,7 @@
     {/if}
 
     <form action="?/register" method="POST"
-        class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col gap-4">
+        class="bg-white border border-gray-200  rounded-xl p-6 shadow-sm flex flex-col gap-4">
 
         <div class="flex flex-col gap-1">
             <label for="username" class="text-sm font-semibold text-gray-700">Username</label>
