@@ -1,5 +1,5 @@
 <script>
-    let { data } = $props();
+   let { data, form } = $props();
 </script>
 
 <div class="max-w-2xl mx-auto">
@@ -11,9 +11,7 @@
     <div class="mt-6">
         <p class="text-gray-700 text-lg">{data.image.description || 'No description'}</p>
         <div class="flex items-center justify-between mt-3">
-            <span class="text-sm text-gray-400">by {data.image.username}</span>
-
-            <span class="text-indigo-600 font-bold text-sm">▲ {data.image.votes} votes</span>
+            
 
             <form action="?/vote" method="POST" class="m-0">
                 <button type="submit"
