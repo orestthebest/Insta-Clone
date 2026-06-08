@@ -35,7 +35,9 @@
     <div class="flex flex-col gap-4 mb-8">
         {#each data.comments as comment (comment.id)}
             <div class="bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm">
-                <p class="text-sm font-semibold text-indigo-600 mb-1">{comment.username}</p>
+                <a href="/profile/{comment.user_id}" class="text-sm font-semibold text-indigo-600 mb-1 hover:underline">
+    {comment.username}
+</a>
                 <p class="text-gray-700 text-sm">{comment.text}</p>
             </div>
         {/each}
