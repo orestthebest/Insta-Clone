@@ -27,7 +27,15 @@ export async function load({ locals }) {
         'SELECT id, username, is_admin FROM users ORDER BY id ASC'
     );
 
-    return { images, users };
+
+    const [comments] = await pool.execute(`
+        SELECT comments.id, comments.text, comments.image_id, users.username, users.id as user_id
+        FROM comments
+        JOIN users ON comments.user_id = users.id
+        ORDER BY comments.id DESC
+    `);
+
+    return { images, users, comments };
 }
 
 export const actions = {
@@ -67,6 +75,21 @@ export const actions = {
 
         
         await pool.execute('DELETE FROM users WHERE id = ?', [userId]);
+
+        redirect(303, '/admin');
+    },
+
+
+    deleteComment: async ({ request, locals }) => {
+
+
+        if (!locals.user) redirect(303, '/login');
+
+        const form = await request.formData();
+        const commentId = form.get('commentId');
+
+        // Delete comment from database
+        await pool.execute('DELETE FROM comments WHERE id = ?', [commentId]);
 
         redirect(303, '/admin');
     }

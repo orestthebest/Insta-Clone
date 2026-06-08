@@ -77,3 +77,41 @@
     </div>
 
 </div>
+
+<!-- Comments section -->
+<h2 class="text-xl font-bold text-gray-700 mb-4">All Comments</h2>
+
+<div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+    <table class="w-full text-sm">
+        <thead class="bg-gray-50 border-b border-gray-200">
+            <tr>
+                <th class="text-left px-4 py-3 text-gray-600 font-semibold">User</th>
+                <th class="text-left px-4 py-3 text-gray-600 font-semibold">Comment</th>
+                <th class="text-left px-4 py-3 text-gray-600 font-semibold">Image</th>
+                <th class="text-left px-4 py-3 text-gray-600 font-semibold">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {#each data.comments as comment (comment.id)}
+                <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                    <td class="px-4 py-3 font-medium text-gray-700">{comment.username}</td>
+                    <td class="px-4 py-3 text-gray-500 max-w-xs truncate">{comment.text}</td>
+                    <td class="px-4 py-3">
+                        <a href="/image/{comment.image_id}" class="text-indigo-500 hover:underline text-xs">
+                            View image
+                        </a>
+                    </td>
+                    <td class="px-4 py-3">
+                        <form action="?/deleteComment" method="POST" class="m-0">
+                            <input type="hidden" name="commentId" value={comment.id} />
+                            <button type="submit"
+                                class="text-xs text-red-500 hover:text-red-700 font-semibold cursor-pointer bg-transparent border-none transition">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {/each}
+        </tbody>
+    </table>
+</div>
