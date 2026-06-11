@@ -9,8 +9,10 @@
         class="w-full rounded-xl shadow-md object-cover max-h-[500px]" />
 
     <div class="mt-6">
+        <h1 class="text-2xl font-bold text-gray-800">{data.image.title || 'Untitled'}</h1>
         <p class="text-gray-700 text-lg">{data.image.description || 'No description'}</p>
         <div class="flex items-center justify-between mt-3">
+        <span class="text-sm text-gray-400">by {data.image.username}</span>
             
 
             <form action="?/vote" method="POST" class="m-0">
