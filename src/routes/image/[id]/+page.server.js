@@ -41,6 +41,22 @@ export const actions = {
 
         const id = params.id;
 
+        
+        const [existing] = await pool.execute(
+        'SELECT * FROM image_votes WHERE user_id = ? AND image_id = ?',
+        [locals.user.id, id]
+        );
+
+    
+        if (existing.length > 0) {
+        redirect(303, `/image/${id}`);
+        }
+
+   
+        await pool.execute(
+        'INSERT INTO image_votes (user_id, image_id) VALUES (?, ?)',
+        [locals.user.id, id]
+        );
 
         await pool.execute(
             'UPDATE images SET votes = votes + 1 WHERE id = ?',
@@ -49,6 +65,9 @@ export const actions = {
 
         redirect(303, `/image/${id}`);
     },
+
+
+
 
     comment: async ({ params, locals, request }) => {
 
