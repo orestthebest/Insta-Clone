@@ -22,7 +22,7 @@
     <p class="text-gray-400 text-xs mt-1">{data.images.length} image{data.images.length === 1 ? '' : 's'} uploaded</p>
 </div>
     {#if data.user && data.user.id === data.profile.id}
-    <a href="/profile/edit"
+    <a href="/edit-profile"
         class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition">
         Edit Profile
     </a>
@@ -44,7 +44,7 @@
 
                 <div class="p-4">
                     <p class="text-sm text-gray-700 font-medium truncate">
-                        {image.description || 'No description'}
+                        {image.title || 'No title'}
                     </p>
                     <div class="flex items-center justify-between mt-3">
                         <span class="text-sm font-semibold text-indigo-600">▲ {image.votes}</span>
