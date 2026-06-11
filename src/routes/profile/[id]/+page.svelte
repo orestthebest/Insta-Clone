@@ -6,13 +6,27 @@
 
 
     <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-8 flex items-center gap-4">
-        <div class="bg-indigo-100 text-indigo-600 rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold">
-            {data.profile.username[0].toUpperCase()}
-        </div>
-        <div>
-            <h1 class="text-2xl font-bold text-gray-800">{data.profile.username}</h1>
-            <p class="text-gray-400 text-sm mt-1">{data.images.length} image{data.images.length === 1 ? '' : 's'} uploaded</p>
-        </div>
+      {#if data.profile.avatar}
+        <img src={data.profile.avatar} alt="avatar"
+        class="w-16 h-16 rounded-full object-cover border border-gray-200" />
+      {:else}
+    <div class="bg-indigo-100 text-indigo-600 rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold">
+        {data.profile.username[0].toUpperCase()}
+    </div>
+    {/if}
+<div class="flex-1">
+        <h1 class="text-2xl font-bold text-gray-800">{data.profile.username}</h1>
+    {#if data.profile.bio}
+        <p class="text-gray-500 text-sm mt-1">{data.profile.bio}</p>
+    {/if}
+    <p class="text-gray-400 text-xs mt-1">{data.images.length} image{data.images.length === 1 ? '' : 's'} uploaded</p>
+</div>
+    {#if data.user && data.user.id === data.profile.id}
+    <a href="/profile/edit"
+        class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition">
+        Edit Profile
+    </a>
+    {/if}
     </div>
 
     {#if data.images.length === 0}

@@ -7,7 +7,7 @@ export async function load({ params, locals }) {
     const userId = params.id;
 
     const [users] = await pool.execute(
-        'SELECT id, username FROM users WHERE id = ?',
+        'SELECT id, username, bio, avatar FROM users WHERE id = ?',
         [userId]
     );
 
