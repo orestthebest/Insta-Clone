@@ -30,7 +30,11 @@
                                 <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded-full">User</span>
                             {/if}
                         </td>
-                        <td class="px-4 py-3">
+                        <td class="px-4 py-3">   
+                            {#if user.id === data.currentUser.id}
+                            <span class="text-xs text-gray-400 font-semibold">You</span>
+                            {:else}
+                                
                             <form action="?/deleteUser" method="POST" class="m-0">
                                 <input type="hidden" name="userId" value={user.id} />
                                 <button type="submit"
@@ -38,6 +42,7 @@
                                     Delete
                                 </button>
                             </form>
+                            {/if}
                         </td>
                     </tr>
                 {/each}
