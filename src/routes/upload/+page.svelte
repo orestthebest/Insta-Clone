@@ -21,6 +21,13 @@
         </div>
 
         <div class="flex flex-col gap-1">
+            <label for="title" class="text-sm font-semibold text-gray-700">Title</label>
+            <input type="text" id="title" name="title" required placeholder="Give your photo a title"
+                class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+        </div>
+
+
+        <div class="flex flex-col gap-1">
             <label for="description" class="text-sm font-semibold text-gray-700">Description</label>
             <textarea id="description" name="description" rows="3" placeholder="What is this photo about?"
                 class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 resize-none">
