@@ -14,7 +14,7 @@
                 <tr>
                     <th class="text-left px-4 py-3 text-gray-600 font-semibold">ID</th>
                     <th class="text-left px-4 py-3 text-gray-600 font-semibold">Username</th>
-                    <th class="text-left px-4 py-3 text-gray-600 font-semibold">Admin</th>
+                    <th class="text-left px-4 py-3 text-gray-600 font-semibold">Role</th>
                     <th class="text-left px-4 py-3 text-gray-600 font-semibold">Action</th>
                 </tr>
             </thead>
@@ -27,7 +27,7 @@
                             {#if user.is_admin}
                                 <span class="bg-indigo-100 text-indigo-600 text-xs font-bold px-2 py-1 rounded-full">Admin</span>
                             {:else}
-                                <span class="text-gray-400">—</span>
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded-full">User</span>
                             {/if}
                         </td>
                         <td class="px-4 py-3">

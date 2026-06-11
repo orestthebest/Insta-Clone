@@ -35,7 +35,7 @@ export async function load({ locals }) {
         ORDER BY comments.id DESC
     `);
 
-    return { images, users, comments };
+    return { images, users, comments, currentUser: locals.user };
 }
 
 export const actions = {

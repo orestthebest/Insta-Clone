@@ -17,6 +17,7 @@ export const actions = {
         const form = await request.formData();
         const imageFile = form.get('image');
         const description = form.get('description');
+        const title = form.get('title');
 
         if (!imageFile || imageFile.size === 0) {
             return fail(400, { error: 'Please select an image' });
