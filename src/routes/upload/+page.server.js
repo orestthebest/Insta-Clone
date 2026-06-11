@@ -28,8 +28,8 @@ export const actions = {
         });
 
         await pool.execute(
-            'INSERT INTO images (image, description, author_id) VALUES (?, ?, ?)',
-            [blob.url, description, locals.user.id]
+            'INSERT INTO images (image, title, description, author_id) VALUES (?, ?, ?, ?)',
+            [blob.url, title, description, locals.user.id]
         );
 
         redirect(303, '/');

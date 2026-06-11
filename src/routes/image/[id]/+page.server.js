@@ -8,7 +8,7 @@ export async function load({ params }) {
 
 
     const [images] = await pool.execute(`
-        SELECT images.id, images.image, images.description, images.votes, images.author_id, users.username
+        SELECT images.id, images.image, images.title, images.description, images.votes, images.author_id, users.username
         FROM images
         JOIN users ON images.author_id = users.id
         WHERE images.id = ?
