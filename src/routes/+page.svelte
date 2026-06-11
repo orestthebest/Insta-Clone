@@ -35,13 +35,24 @@
 {/if}
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {#each data.images as image (image.id)}
+     {#each data.images as image, i (image.id)}
+
         <a href="/image/{image.id}"
-            class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-1 transition block">
+            class="bg-white rounded-xl border-2 shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-1 transition block
+            {i === 0 ? 'border-yellow-400 shadow-yellow-100' : i === 1 ? 'border-gray-400 shadow-gray-100' : i === 2 ? 'border-orange-400 shadow-orange-100' : 'border-gray-200'}">
 
-            <img src={image.image} alt={image.description}
-                class="w-full h-52 object-cover" />
+            <div class="relative">
+                <img src={image.image} alt={image.description}
+                    class="w-full h-52 object-cover" />
 
+                {#if i === 0}
+                    <span class="absolute top-2 left-2 bg-yellow-400 text-white text-xs font-bold px-2 py-1 rounded-full">#1</span>
+                {:else if i === 1}
+                    <span class="absolute top-2 left-2 bg-gray-400 text-white text-xs font-bold px-2 py-1 rounded-full">#2</span>
+                {:else if i === 2}
+                    <span class="absolute top-2 left-2 bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded-full">#3</span>
+                {/if}
+            </div>
             <div class="p-4">
                 <p class="text-sm text-gray-700 font-medium truncate">
                     {image.description || 'No description'}
