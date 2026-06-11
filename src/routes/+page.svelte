@@ -54,9 +54,8 @@
                 {/if}
             </div>
             <div class="p-4">
-                <p class="text-sm text-gray-700 font-medium truncate">
-                    {image.description || 'No description'}
-                </p>
+                <p class="text-sm text-gray-700 font-medium truncate">{image.title || 'No title'}</p>
+                    
                 <div class="flex items-center justify-between mt-3">
                     <span class="text-xs text-gray-400">by {image.username}</span>
                     <span class="flex items-center gap-1 text-sm font-semibold text-indigo-600">
