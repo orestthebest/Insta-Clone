@@ -1,3 +1,19 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+
+
+@theme {
+    --color-indigo-50: #fff0f6;
+    --color-indigo-100: #fce7f3;
+    --color-indigo-400: #f472b6;
+    --color-indigo-600: #db2777;
+    --color-indigo-700: #be185d;
+    --color-indigo-800: #9d174d;
+}
+
+body {
+    background-color: #f9f0f4;
+    font-family: 'Inter', sans-serif;
+}

@@ -6,7 +6,10 @@
     <!-- Landing section for non logged in users -->
     <div class="flex flex-col items-center justify-center text-center py-24 px-4">
 
-        <h1 class="text-5xl font-bold text-gray-800 mb-4">Welcome to PixShare</h1>
+        <h1 class="text-5xl font-black mb-4 text-transparent bg-clip-text"
+        style="background-image: linear-gradient(to right, #db2777, #9333ea)">
+        Welcome to OrestGram
+        </h1>
         <p class="text-gray-400 text-lg mb-8 max-w-md">
             Discover the best photos from our community. Login to upload, vote and comment.
         </p>
@@ -28,7 +31,10 @@
 {/if}
 
 <!-- Image grid — visible to everyone -->
-<h2 class="text-2xl font-bold text-gray-800 mb-6">Best Photos</h2>
+<h2 class="text-2xl font-black mb-6 text-transparent bg-clip-text"
+    style="background-image: linear-gradient(to right, #db2777, #9333ea)">
+    Best Photos
+</h2>
 
 {#if data.images.length === 0}
     <p class="text-gray-400">No images uploaded yet. Be the first!</p>
@@ -38,8 +44,8 @@
      {#each data.images as image, i (image.id)}
 
         <a href="/image/{image.id}"
-            class="bg-white rounded-xl border-2 shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-1 transition block
-            {i === 0 ? 'border-yellow-400 shadow-yellow-100' : i === 1 ? 'border-gray-400 shadow-gray-100' : i === 2 ? 'border-orange-400 shadow-orange-100' : 'border-gray-200'}">
+            class="bg-white rounded-2xl border-2 shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition block
+            {i === 0 ? 'border-yellow-400 shadow-yellow-100' : i === 1 ? 'border-gray-400 shadow-gray-300' : i === 2 ? 'border-orange-400 shadow-orange-100' : 'border-gray-200'}">
 
             <div class="relative">
                 <img src={image.image} alt={image.description}
