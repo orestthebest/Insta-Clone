@@ -43,7 +43,7 @@
             style="background-image: linear-gradient(to right, #db2777, #9333ea)">
             OrestGram
         </span>
-        <span>HTL Medientechnik © 2026</span>
+        <span>Made by Orest Bashi 2026</span>
     </div>
 </footer>
 

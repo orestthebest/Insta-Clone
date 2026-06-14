@@ -98,6 +98,30 @@ export const actions = {
         );
 
         redirect(303, `/image/${id}`);
+    },
+
+
+    deleteComment: async ({ request, locals }) => {
+    if (!locals.user) redirect(303, '/login');
+
+    const form = await request.formData();
+    const commentId = form.get('commentId');
+    const id = request.url.split('/image/')[1].split('/')[0];
+
+    // Check if this comment belongs to the logged in user
+    const [rows] = await pool.execute(
+        'SELECT * FROM comments WHERE id = ?',
+        [commentId]
+    );
+
+    if (rows.length === 0) return;
+
+    // Only allow the owner to delete
+    if (rows[0].user_id !== locals.user.id) return;
+
+    await pool.execute('DELETE FROM comments WHERE id = ?', [commentId]);
+
+    redirect(303, `/image/${rows[0].image_id}`);
     }
 };
 

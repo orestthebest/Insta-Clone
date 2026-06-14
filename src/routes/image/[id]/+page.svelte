@@ -60,12 +60,22 @@
             </div>
             {/if}
         </a>
-        <div>
+        <div class="flex-1">
             <a href="/profile/{comment.user_id}" class="text-sm font-semibold text-pink-600 hover:underline">
             {comment.username}
             </a>
-        
-                <p class="text-gray-700 text-sm">{comment.text}</p>
+            <div class="flex items-center justify-between">
+                <p class="text-gray-700 text-sm flex-1">{comment.text}</p>
+                {#if data.user && data.user.id === comment.user_id}
+        <form action="?/deleteComment" method="POST" class="m-0 shrink-0">
+            <input type="hidden" name="commentId" value={comment.id} />
+            <button type="submit"
+                class="text-xs text-red-400 hover:text-red-600 font-semibold cursor-pointer bg-transparent border-none transition">
+                Delete
+            </button>
+        </form>
+             {/if}
+        </div>
             </div>
 
     </div>

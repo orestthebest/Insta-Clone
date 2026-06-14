@@ -84,7 +84,7 @@
 </div>
 
 <!-- Comments section -->
-<h2 class="text-xl font-bold text-gray-700 mb-4">All Comments</h2>
+<h2 class="text-xl font-bold text-gray-700 mb-4 mt-10">All Comments</h2>
 
 <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
     <table class="w-full text-sm">
