@@ -41,7 +41,15 @@ export const actions = {
 
         const id = params.id;
 
-        
+
+        const [adminCheck] = await pool.execute(
+        'SELECT is_admin FROM users WHERE id = ?',
+        [locals.user.id]
+        );
+
+        const isAdmin = adminCheck[0].is_admin;
+
+    if (!isAdmin) {
         const [existing] = await pool.execute(
         'SELECT * FROM image_votes WHERE user_id = ? AND image_id = ?',
         [locals.user.id, id]
@@ -57,6 +65,7 @@ export const actions = {
         'INSERT INTO image_votes (user_id, image_id) VALUES (?, ?)',
         [locals.user.id, id]
         );
+    }
 
         await pool.execute(
             'UPDATE images SET votes = votes + 1 WHERE id = ?',
