@@ -8,7 +8,7 @@ export async function load({ params }) {
 
 
     const [images] = await pool.execute(`
-        SELECT images.id, images.image, images.title, images.description, images.votes, images.author_id, users.username
+        SELECT images.id, images.image, images.title, images.description, images.votes, images.author_id, users.username, users.avatar
         FROM images
         JOIN users ON images.author_id = users.id
         WHERE images.id = ?
@@ -20,7 +20,7 @@ export async function load({ params }) {
 
 
     const [comments] = await pool.execute(`
-        SELECT comments.id, comments.text, comments.created_at, users.username, users.id as user_id
+        SELECT comments.id, comments.text, comments.created_at, users.username, users.id as user_id, users.avatar
         FROM comments
         JOIN users ON comments.user_id = users.id
         WHERE comments.image_id = ?

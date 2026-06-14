@@ -2,7 +2,7 @@ import pool from '$lib/server/database.js';
 
 export async function load({ locals }) {
     const [images] = await pool.execute(`
-        SELECT images.id, images.image, images.title, images.description, images.votes, users.username
+        SELECT images.id, images.image, images.title, images.description, images.votes, users.username, users.avatar
         FROM images
         JOIN users ON images.author_id = users.id
         ORDER BY images.votes DESC

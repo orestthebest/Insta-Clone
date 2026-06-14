@@ -63,7 +63,21 @@
                 <p class="text-sm text-gray-700 font-medium truncate">{image.title || 'No title'}</p>
                     
                 <div class="flex items-center justify-between mt-3">
-                    <span class="text-xs text-gray-400">by {image.username}</span>
+
+
+                    <div class="flex items-center gap-2">
+        <span class="text-xs text-gray-400">by</span>
+        {#if image.avatar}
+            <img src={image.avatar} alt="avatar"
+            class="w-5 h-5 rounded-full object-cover" />
+        {:else}
+            <div class="w-5 h-5 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xs font-bold">
+            {image.username[0].toUpperCase()}
+             </div>
+            {/if}
+                    <span class="text-xs text-gray-400">{image.username}</span>
+        </div>
+
                     <span class="flex items-center gap-1 text-sm font-semibold text-indigo-600">
                         ▲ {image.votes}
                     </span>

@@ -12,8 +12,20 @@
         <h1 class="text-2xl font-bold text-gray-800">{data.image.title || 'Untitled'}</h1>
         <p class="text-gray-700 text-lg">{data.image.description || 'No description'}</p>
         <div class="flex items-center justify-between mt-3">
-        <span class="text-sm text-gray-400">by {data.image.username}</span>
-            
+
+
+            <div class="flex items-center gap-2">
+            <span class="text-sm text-gray-400">by</span>
+     {#if data.image.avatar}
+        <img src={data.image.avatar} alt="avatar"
+            class="w-6 h-6 rounded-full object-cover"/>
+     {:else}
+        <div class="w-6 h-6 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xs font-bold">
+            {data.image.username[0].toUpperCase()}
+        </div>
+     {/if}
+        <a href="/profile/{data.image.author_id}" class="text-xs text-gray-400 hover:text-pink-600 transition">{data.image.username}</a>
+        </div> 
 
             <form action="?/vote" method="POST" class="m-0">
                 <button type="submit"
@@ -36,12 +48,27 @@
 
     <div class="flex flex-col gap-4 mb-8">
         {#each data.comments as comment (comment.id)}
-            <div class="bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm">
-                <a href="/profile/{comment.user_id}" class="text-sm font-semibold text-indigo-600 mb-1 hover:underline">
-    {comment.username}
-</a>
+
+            <div class="bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm flex gap-3 items-start">
+                <a href="/profile/{comment.user_id}">
+            {#if comment.avatar}
+                <img src={comment.avatar} alt="avatar"
+                class="w-8 h-8 rounded-full object-cover border border-gray-200 mt-0.5" />
+            {:else}
+                <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-sm font-bold mt-0.5">
+                {comment.username[0].toUpperCase()}
+            </div>
+            {/if}
+        </a>
+        <div>
+            <a href="/profile/{comment.user_id}" class="text-sm font-semibold text-pink-600 hover:underline">
+            {comment.username}
+            </a>
+        
                 <p class="text-gray-700 text-sm">{comment.text}</p>
             </div>
+
+    </div>
         {/each}
     </div>
 
