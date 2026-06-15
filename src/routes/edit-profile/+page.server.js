@@ -3,6 +3,7 @@ import { redirect, fail } from '@sveltejs/kit';
 import { put } from '@vercel/blob';
 import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
+// Lädt die aktuellen Profildaten des eingeloggten Users in das Formular.
 export async function load({ locals }) {
    
     if (!locals.user) redirect(303, '/login');
@@ -17,6 +18,7 @@ export async function load({ locals }) {
 }
 
 export const actions = {
+    // Speichert die Änderungen am Profil (Bio und/oder neues Avatar-Bild).
     save: async ({ request, locals }) => {
         if (!locals.user) redirect(303, '/login');
 
@@ -24,21 +26,22 @@ export const actions = {
         const bio = form.get('bio');
         const avatarFile = form.get('avatar');
 
-
+        // Wurde ein neues Avatar-Bild hochgeladen?
         if (avatarFile && avatarFile.size > 0) {
+            // Neues Bild zu Vercel Blob hochladen (Zufalls-Suffix gegen Namens-Konflikte).
             const blob = await put(avatarFile.name, avatarFile, {
                 access: 'public',
                 token: BLOB_READ_WRITE_TOKEN,
                 addRandomSuffix: true
             });
 
-
+            // Bio und neue Avatar-URL speichern.
             await pool.execute(
                 'UPDATE users SET bio = ?, avatar = ? WHERE id = ?',
                 [bio, blob.url, locals.user.id]
             );
         } else {
-         
+            // Kein neues Bild: nur die Bio aktualisieren.
             await pool.execute(
                 'UPDATE users SET bio = ? WHERE id = ?',
                 [bio, locals.user.id]
