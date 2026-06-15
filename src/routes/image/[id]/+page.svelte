@@ -6,7 +6,7 @@
 
 
     <img src={data.image.image} alt={data.image.description}
-        class="w-full rounded-xl shadow-md object-cover max-h-[500px]" />
+        class="w-full rounded-xl shadow-md object-cover max-h-500px" />
 
     <div class="mt-6">
         <h1 class="text-2xl font-bold text-gray-800">{data.image.title || 'Untitled'}</h1>

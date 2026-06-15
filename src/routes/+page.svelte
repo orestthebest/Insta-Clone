@@ -30,7 +30,21 @@
     <hr class="border-gray-200 mb-10" />
 {/if}
 
-<!-- Image grid — visible to everyone -->
+
+{#if data.user}
+    <div class="mb-10">
+        <p class="text-xs font-bold tracking-widest text-pink-500 uppercase mb-2">Community Feed</p>
+        <h1 class="text-5xl font-black leading-tight mb-3 text-gray-800">
+         Share your<br/>
+    <span class="text-8xl text-transparent bg-clip-text italic"
+    style="background-image: linear-gradient(to right, #db2777, #9333ea); font-family: 'Brush Script MT', cursive">
+    best moments.
+</span>
+</h1>
+        <p class="text-gray-400">The best photos from our community, voted by you!</p>
+    </div>
+    
+{/if}
 <h2 class="text-2xl font-black mb-6 text-transparent bg-clip-text"
     style="background-image: linear-gradient(to right, #db2777, #9333ea)">
     Best Photos

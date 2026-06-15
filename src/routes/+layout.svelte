@@ -37,13 +37,41 @@
         {@render children()}
     </main>
 
-   <footer class="bg-white border-t border-gray-100 mt-auto">
-    <div class="max-w-4xl mx-auto px-4 py-5 flex items-center justify-between text-xs text-gray-400">
-        <span class="font-bold text-transparent bg-clip-text"
-            style="background-image: linear-gradient(to right, #db2777, #9333ea)">
-            OrestGram
-        </span>
-        <span>Made by Orest Bashi 2026</span>
+<footer class="bg-white border-t border-gray-100 mt-auto">
+    <div class="max-w-4xl mx-auto px-4 py-8 flex flex-col sm:flex-row justify-between gap-8">
+        
+      
+        <div class="max-w-xs">
+            <span class="font-black text-xl text-transparent bg-clip-text"
+                style="background-image: linear-gradient(to right, #db2777, #9333ea)">
+                OrestGram
+            </span>
+            <p class="text-xs text-gray-400 mt-2">Capture your memories and share them with the world. Upload, discover, and vote for the photos you love most.</p>
+        </div>
+
+        
+        <div class="flex gap-12 text-sm">
+            <div class="flex flex-col gap-2">
+                <span class="font-bold text-gray-600 uppercase text-xs tracking-widest">Explore</span>
+                <a href="/" class="text-gray-400 hover:text-pink-600 transition">Home</a>
+                <a href="/upload" class="text-gray-400 hover:text-pink-600 transition">Upload</a>
+                <a href="/admin" class="text-gray-400 hover:text-pink-600 transition">Admin</a>
+            </div>
+            <div class="flex flex-col gap-2">
+                <span class="font-bold text-gray-600 uppercase text-xs tracking-widest">Account</span>
+                <a href="/upload" class="text-gray-400 hover:text-pink-600 transition">Upload</a>
+                {#if data.user}
+                    <a href="/profile/{data.user.id}" class="text-gray-400 hover:text-pink-600 transition">My Profile</a>
+                {/if}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 py-4 text-xs text-gray-400">
+            © 2026 OrestGram. All rights reserved.
+        </div>
     </div>
 </footer>
 
