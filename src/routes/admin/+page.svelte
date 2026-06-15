@@ -1,11 +1,12 @@
 <script>
+    // data = alle User, Bilder, Kommentare + der aktuelle Admin.
     let { data } = $props();
 </script>
 
 <div>
     <h1 class="text-3xl font-bold text-gray-800 mb-8">Admin Panel</h1>
 
-    <!-- Users section -->
+    <!-- Bereich: alle User in einer Tabelle -->
     <h2 class="text-xl font-bold text-gray-700 mb-4">All Users</h2>
 
     <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-10">
@@ -19,18 +20,22 @@
                 </tr>
             </thead>
             <tbody>
+            <!-- Eine Zeile pro User -->
                 {#each data.users as user (user.id)}
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
                         <td class="px-4 py-3 text-gray-400">{user.id}</td>
                         <td class="px-4 py-3 font-medium text-gray-700">{user.username}</td>
                         <td class="px-4 py-3">
+                            <!-- Wenn User ein Admin ist: Role ist Admin -->
                             {#if user.is_admin}
                                 <span class="bg-indigo-100 text-indigo-600 text-xs font-bold px-2 py-1 rounded-full">Admin</span>
                             {:else}
+                            <!-- Wenn nicht, dann nur ein User -->
                                 <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded-full">User</span>
                             {/if}
                         </td>
                         <td class="px-4 py-3">   
+                            <!-- Beim eigenen Account "You" statt Delete-Button anzeigen -->
                             {#if user.id === data.currentUser.id}
                             <span class="text-xs text-gray-400 font-semibold">You</span>
                             {:else}
@@ -50,7 +55,7 @@
         </table>
     </div>
 
-    <!-- Images section -->
+    <!-- Bereich: alle Bilder als Raster -->
     <h2 class="text-xl font-bold text-gray-700 mb-4">All Images</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -68,6 +73,7 @@
                         <span class="text-xs text-gray-400">by {image.username}</span>
                         <span class="text-xs font-semibold text-indigo-600">▲ {image.votes}</span>
                     </div>
+                    <!-- Bild löschen -->
                     <form action="?/deleteImage" method="POST" class="mt-2 m-0">
                         <input type="hidden" name="imageId" value={image.id} />
                         <button type="submit"
@@ -83,7 +89,7 @@
 
 </div>
 
-<!-- Comments section -->
+<!-- Bereich: alle Kommentare in einer Tabelle -->
 <h2 class="text-xl font-bold text-gray-700 mb-4 mt-10">All Comments</h2>
 
 <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
@@ -97,6 +103,7 @@
             </tr>
         </thead>
         <tbody>
+            <!-- Eine Zeile pro Kommentar -->
             {#each data.comments as comment (comment.id)}
                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
                     <td class="px-4 py-3 font-medium text-gray-700">{comment.username}</td>
@@ -106,7 +113,9 @@
                             View image
                         </a>
                     </td>
+
                     <td class="px-4 py-3">
+                        <!-- Kommentar löschen -->
                         <form action="?/deleteComment" method="POST" class="m-0">
                             <input type="hidden" name="commentId" value={comment.id} />
                             <button type="submit"
