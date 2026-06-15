@@ -3,6 +3,8 @@ import pool from '$lib/server/database.js';
 import { verifyPassword, createSession } from '$lib/server/auth.js';
 
 export const actions = {
+    
+    // Prüft die Login-Daten und erstellt bei Erfolg eine Session.
     login: async ({ request, cookies }) => {
         const form = await request.formData();
         const username = form.get('username');
@@ -19,6 +21,8 @@ export const actions = {
             [username]
         );
 
+        // Gleiche Fehlermeldung für "User existiert nicht" und "falsches Passwort",
+        // damit man nicht herausfinden kann, welche Usernamen es gibt.
         if (rows.length === 0) {
             return fail(400, { error: 'Wrong username or password' });
         }
@@ -29,7 +33,7 @@ export const actions = {
             return fail(400, { error: 'Wrong username or password' });
         }
 
-        
+        // Session-Cookie setzen (30 Tage gültig) und zur Startseite weiterleiten.
         const sessionId = await createSession(rows[0].id);
         cookies.set('session', sessionId, {
             path: '/',
