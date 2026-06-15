@@ -1,9 +1,11 @@
+/* Tailwind + Plugins für Formulare und Texte einbinden */
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
 
-
+/* Farb-Variablen überschreiben: die "indigo"-Farben sind hier auf Pink-Töne
+umgestellt, damit das ganze Design ohne viele Änderungen pink wird (OrestGram-Look) */
 @theme {
     --color-indigo-50: #fff0f6;
     --color-indigo-100: #fce7f3;
@@ -13,6 +15,7 @@
     --color-indigo-800: #9d174d;
 }
 
+/* Grundeinstellungen für die ganze Seite: Hintergrundfarbe und Schriftart */
 body {
     background-color: #f9f0f4;
     font-family: 'Inter', sans-serif;
