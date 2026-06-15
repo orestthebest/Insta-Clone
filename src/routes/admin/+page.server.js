@@ -47,6 +47,10 @@ export const actions = {
     deleteImage: async ({ request, locals }) => {
         if (!locals.user) redirect(303, '/login');
 
+        // Nur Admins dürfen diese Aktion ausführen.
+        const [adminCheck] = await pool.execute('SELECT is_admin FROM users WHERE id = ?', [locals.user.id]);
+        if (!adminCheck[0].is_admin) redirect(303, '/');
+
         const form = await request.formData();
         const imageId = form.get('imageId');
 
@@ -58,7 +62,7 @@ export const actions = {
 
         if (rows.length === 0) return;
 
-       // Bild-Datei aus dem Blob-Speicher löschen.
+        // Bild-Datei aus dem Blob-Speicher löschen.
         await del(rows[0].image, { token: BLOB_READ_WRITE_TOKEN });
 
         // Eintrag aus der Datenbank löschen.
@@ -70,6 +74,10 @@ export const actions = {
     // Löscht einen User (Admin-Recht).
     deleteUser: async ({ request, locals }) => {
         if (!locals.user) redirect(303, '/login');
+
+        // Nur Admins dürfen diese Aktion ausführen.
+        const [adminCheck] = await pool.execute('SELECT is_admin FROM users WHERE id = ?', [locals.user.id]);
+        if (!adminCheck[0].is_admin) redirect(303, '/');
 
         const form = await request.formData();
         const userId = form.get('userId');
@@ -85,9 +93,11 @@ export const actions = {
 
     // Löscht einen beliebigen Kommentar (Admin-Recht).
     deleteComment: async ({ request, locals }) => {
-
-
         if (!locals.user) redirect(303, '/login');
+
+        // Nur Admins dürfen diese Aktion ausführen.
+        const [adminCheck] = await pool.execute('SELECT is_admin FROM users WHERE id = ?', [locals.user.id]);
+        if (!adminCheck[0].is_admin) redirect(303, '/');
 
         const form = await request.formData();
         const commentId = form.get('commentId');
