@@ -1,5 +1,6 @@
 import pool from '$lib/server/database.js';
 
+// Lädt die 25 Bilder mit den meisten Votes für die Startseite.
 export async function load({ locals }) {
     const [images] = await pool.execute(`
         SELECT images.id, images.image, images.title, images.description, images.votes, users.username, users.avatar

@@ -1,4 +1,5 @@
 <script>
+    // data kommt von +page.server.js (Bilderliste + eingeloggter User).
     let { data } = $props();
 </script>
 
