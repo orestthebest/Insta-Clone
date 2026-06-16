@@ -12,7 +12,7 @@
 </svelte:head>
 
 <!-- Grundgerüst: Header oben, Inhalt in der Mitte, Footer unten -->
-<div class="min-h-screen flex flex-col" style="background-color: #f9f0f4">
+<div class="min-h-screen flex flex-col overflow-x-hidden" style="background-color: #f9f0f4">
 
     <!-- Kopfzeile mit Logo und Navigation, bleibt beim Scrollen oben kleben -->
     <header class="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm">
@@ -22,10 +22,10 @@
             OrestGram
             </a>
 
-            <nav class="flex items-center gap-4 text-sm font-medium">
+            <nav class="flex items-center gap-2 sm:gap-4 text-sm font-medium">
             <!-- Eingeloggt: Begrüßung, Upload, Profil und Logout -->
                 {#if data.user}
-                    <span class="text-gray-400">Hi, {data.user.username}</span>
+                    <span class="text-gray-400 hidden sm:inline">Hi, {data.user.username}</span>
                     <a href="/upload" class="bg-pink-600 text-white px-3 py-1.5 rounded-lg hover:bg-pink-700 transition text-sm font-semibold">Upload</a>
                     <a href="/profile/{data.user.id}" class="text-gray-600 hover:text-pink-600 transition">My Profile</a>
                     <form action="/logout?/logout" method="POST" class="m-0">

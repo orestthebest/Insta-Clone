@@ -37,13 +37,13 @@
     <!-- Begrüssungs-Header: wird nur eingeloggten Usern gezeigt -->
     <div class="mb-10">
         <p class="text-xs font-bold tracking-widest text-pink-500 uppercase mb-2">Community Feed</p>
-        <h1 class="text-5xl font-black leading-tight mb-3 text-gray-800">
+        <h1 class="text-4xl sm:text-5xl font-black leading-tight mb-3 text-gray-800">
          Share your<br/>
-    <span class="text-8xl text-transparent bg-clip-text italic"
+    <span class="text-5xl sm:text-8xl text-transparent bg-clip-text italic"
     style="background-image: linear-gradient(to right, #db2777, #9333ea); font-family: 'Brush Script MT', cursive">
     best moments.
 </span>
-</h1>
+        </h1>
         <p class="text-gray-400">The best photos from our community, voted by you!</p>
     </div>
     
