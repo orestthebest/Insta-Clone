@@ -6,7 +6,7 @@
 <div>
 
     <!-- Profil-Kopf: Avatar, Username, Bio und Anzahl der Bilder -->
-    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-8 flex flex-col sm:flex-row items-start sm:items-center items-center gap-4">
+    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
       {#if data.profile.avatar}
         <img src={data.profile.avatar} alt="avatar"
         class="w-16 h-16 rounded-full object-cover border border-gray-200" />

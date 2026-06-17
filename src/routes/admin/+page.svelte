@@ -13,9 +13,9 @@
         <table class="w-full text-sm">
             <thead class="bg-gray-50 border-b border-gray-200">
                 <tr>
-                    <th class="text-left px-4 py-3 text-gray-600 font-semibold">ID</th>
+                    <th class="text-left px-4 py-3 text-gray-600 font-semibold hidden sm:table-cell">ID</th>
                     <th class="text-left px-4 py-3 text-gray-600 font-semibold">Username</th>
-                    <th class="text-left px-4 py-3 text-gray-600 font-semibold">Role</th>
+                    <th class="text-left px-4 py-3 text-gray-600 font-semibold hidden sm:table-cell">Role</th>
                     <th class="text-left px-4 py-3 text-gray-600 font-semibold">Action</th>
                 </tr>
             </thead>
@@ -23,7 +23,7 @@
             <!-- Eine Zeile pro User -->
                 {#each data.users as user (user.id)}
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
-                        <td class="px-4 py-3 text-gray-400">{user.id}</td>
+                        <td class="px-4 py-3 text-gray-400 hidden sm:table-cell">{user.id}</td>
                         <td class="px-4 py-3 font-medium text-gray-700">{user.username}</td>
                         <td class="px-4 py-3">
                             <!-- Wenn User ein Admin ist: Role ist Admin -->
@@ -98,7 +98,7 @@
             <tr>
                 <th class="text-left px-4 py-3 text-gray-600 font-semibold">User</th>
                 <th class="text-left px-4 py-3 text-gray-600 font-semibold">Comment</th>
-                <th class="text-left px-4 py-3 text-gray-600 font-semibold">Image</th>
+                <th class="text-left px-4 py-3 text-gray-600 font-semibold hidden sm:table-cell">Image</th>
                 <th class="text-left px-4 py-3 text-gray-600 font-semibold">Action</th>
             </tr>
         </thead>
@@ -108,7 +108,7 @@
                 <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
                     <td class="px-4 py-3 font-medium text-gray-700">{comment.username}</td>
                     <td class="px-4 py-3 text-gray-500 max-w-xs truncate">{comment.text}</td>
-                    <td class="px-4 py-3">
+                    <td class="px-4 py-3 hidden sm:table-cell">
                         <a href="/image/{comment.image_id}" class="text-indigo-500 hover:underline text-xs">
                             View image
                         </a>
