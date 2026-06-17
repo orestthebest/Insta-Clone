@@ -68,7 +68,7 @@
                 </a>
 
                 <div class="p-3">
-                    <p class="text-sm text-gray-700 truncate">{image.description || 'No description'}</p>
+                    <p class="text-sm text-gray-700 truncate">{image.title || 'No title'}</p>
                     <div class="flex items-center justify-between mt-2">
                         <span class="text-xs text-gray-400">by {image.username}</span>
                         <span class="text-xs font-semibold text-indigo-600">▲ {image.votes}</span>

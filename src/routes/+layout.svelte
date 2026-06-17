@@ -63,7 +63,6 @@
             <div class="flex flex-col gap-2">
                 <span class="font-bold text-gray-600 uppercase text-xs tracking-widest">Explore</span>
                 <a href="/" class="text-gray-400 hover:text-pink-600 transition">Home</a>
-                <a href="/upload" class="text-gray-400 hover:text-pink-600 transition">Upload</a>
                 <a href="/admin" class="text-gray-400 hover:text-pink-600 transition">Admin</a>
             </div>
             <div class="flex flex-col gap-2">

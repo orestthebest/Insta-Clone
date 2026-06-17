@@ -19,7 +19,7 @@ export async function load({ locals }) {
 
     // Alle Bilder mit Autor laden.
     const [images] = await pool.execute(`
-        SELECT images.id, images.image, images.description, images.votes, users.username
+        SELECT images.id, images.image, images.title, images.description, images.votes, users.username
         FROM images
         JOIN users ON images.author_id = users.id
         ORDER BY images.id DESC
