@@ -6,7 +6,7 @@
 <div>
 
     <!-- Profil-Kopf: Avatar, Username, Bio und Anzahl der Bilder -->
-    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-8 flex items-center gap-4">
+    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-8 flex flex-col sm:flex-row items-start sm:items-center items-center gap-4">
       {#if data.profile.avatar}
         <img src={data.profile.avatar} alt="avatar"
         class="w-16 h-16 rounded-full object-cover border border-gray-200" />
@@ -27,7 +27,7 @@
     <!-- "Edit Profile"-Button nur beim eigenen Profil anzeigen -->
     {#if data.user && data.user.id === data.profile.id}
     <a href="/edit-profile"
-        class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition">
+        class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition sm:ml-auto">
         Edit Profile
     </a>
     {/if}
