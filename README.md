@@ -1,42 +1,33 @@
-# sv
+# OrestGram
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+An Instagram-style image sharing app built with SvelteKit, TailwindCSS and MySQL.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Register, login and logout
+- Upload images with title and description
+- Vote on images (once per user)
+- Comment on images
+- Profile page with avatar and bio
+- Top 3 images highlighted on homepage
+- Admin panel for managing users, images and comments
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Tech Stack
 
-To recreate this project with the same configuration:
+- SvelteKit (Svelte 5)
+- TailwindCSS v4
+- MySQL with mysql2
+- Vercel Blob for image storage
+- bcrypt for password hashing
 
-```sh
-# recreate this project
-npx sv@0.15.3 create --template minimal --no-types --add prettier eslint tailwindcss="plugins:typography,forms" --install npm ./
-```
+## Setup
 
-## Developing
+1. Clone the repository
+2. Run `npm install`
+3. Create a `.env` file with your database and Vercel Blob credentials
+4. Run the SQL in `database.sql` to create the tables
+5. Run `npm run dev` to start the development server
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Deployment
 
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Deployed on Vercel: [orestgram.vercel.app](https://orestgram.vercel.app)
